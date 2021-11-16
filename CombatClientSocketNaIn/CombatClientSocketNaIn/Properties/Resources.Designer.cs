@@ -63,6 +63,16 @@ namespace CombatClientSocketNaIn.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap elfeOreille {
+            get {
+                object obj = ResourceManager.GetObject("elfeOreille", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nainArme {
             get {
                 object obj = ResourceManager.GetObject("nainArme", resourceCulture);

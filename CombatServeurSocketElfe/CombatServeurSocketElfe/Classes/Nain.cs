@@ -10,7 +10,7 @@ namespace CombatServeurSocketElfe.Classes
     public class Nain:Combattant
     {
         public string Arme { get; set; }
-        string[] tArme = {"hache","pioche","lance" };
+       public string[] tArme = {"hache","pioche","lance" };
         public Nain(int vie, int force, int noArme)
         {
             Vie = vie;

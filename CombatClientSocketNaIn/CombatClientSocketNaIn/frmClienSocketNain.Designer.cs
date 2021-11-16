@@ -54,7 +54,7 @@
             // 
             // btnFrappe
             // 
-            this.btnFrappe.Location = new System.Drawing.Point(278, 66);
+            this.btnFrappe.Location = new System.Drawing.Point(280, 81);
             this.btnFrappe.Name = "btnFrappe";
             this.btnFrappe.Size = new System.Drawing.Size(96, 46);
             this.btnFrappe.TabIndex = 19;
@@ -119,6 +119,7 @@
             // 
             // picElfe
             // 
+            this.picElfe.Image = global::CombatClientSocketNaIn.Properties.Resources.elfeOreille;
             this.picElfe.Location = new System.Drawing.Point(393, 25);
             this.picElfe.Name = "picElfe";
             this.picElfe.Size = new System.Drawing.Size(220, 160);
@@ -128,6 +129,7 @@
             // 
             // picNain
             // 
+            this.picNain.Image = global::CombatClientSocketNaIn.Properties.Resources.nainArme;
             this.picNain.Location = new System.Drawing.Point(39, 25);
             this.picNain.Name = "picNain";
             this.picNain.Size = new System.Drawing.Size(220, 160);
