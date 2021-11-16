@@ -18,3 +18,13 @@ C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatServeurSocketElfe\CombatServeurSocketElfe
 C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.csproj.CoreCompileInputs.cache
 C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.exe
 C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.pdb
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.csproj.AssemblyReference.cache
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.frmServeurSocketElfe.resources
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.csproj.GenerateResource.cache
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.exe
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.pdb
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\bin\Debug\CombatServeurSocketElfe.exe.config
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\bin\Debug\CombatServeurSocketElfe.exe
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\bin\Debug\CombatServeurSocketElfe.pdb
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.Properties.Resources.resources
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatServeurSocketElfe\CombatServeurSocketElfe\obj\Debug\CombatServeurSocketElfe.csproj.CoreCompileInputs.cache

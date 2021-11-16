@@ -31,13 +31,15 @@ namespace CombatClientSocketNaIn
         void Reset()
         {
             m_nain = new Nain(m_r.Next(10, 20), m_r.Next(2, 6), m_r.Next(0, 3));
-            picNain.Image = m_nain.Avatar;
+            //picNain.Image = m_nain.Avatar;
+            m_nain.Avatar = picNain.Image;
             lblVieNain.Text = "Vie: " + m_nain.Vie.ToString(); ;
             lblForceNain.Text = "Force: " + m_nain.Force.ToString();
             lblArmeNain.Text = "Arme: " + m_nain.Arme;
 
             m_elfe = new Elfe(1, 0, 0);
-            picElfe.Image = m_elfe.Avatar;
+            m_elfe.Avatar = picElfe.Image;
+            //picElfe.Image = m_elfe.Avatar;
             lblVieElfe.Text = "Vie: " + m_elfe.Vie.ToString();
             lblForceElfe.Text = "Force: " + m_elfe.Force.ToString();
             lblSortElfe.Text = "Sort: " + m_elfe.Sort.ToString();
@@ -51,7 +53,88 @@ namespace CombatClientSocketNaIn
 
         private void btnFrappe_Click(object sender, EventArgs e)
         {
-            
+            /* déclaration de variables */
+            string envoie = m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_nain.Arme;
+            string reponse = "aucune";
+            int nbrOctetReception;
+            byte[] tByteReception = new byte[50];
+            ASCIIEncoding textByte = new ASCIIEncoding();
+            byte[] tByteEnvoie = textByte.GetBytes(envoie);
+
+            try
+            {
+                // initialisation et connection du socket au serveur TCP
+                Socket m_client = null;
+                m_client = new Socket(SocketType.Stream, ProtocolType.Tcp);
+                m_client.Connect(IPAddress.Parse("127.0.0.1"), 7025);
+                MessageBox.Show("assurez-vous que le serveur est en attente d'un client");
+                // vérification que la connection à fonctionné et traitement de transmission/réception
+                if (m_client.Connected)
+                {
+                    lstReception.Items.Add("Transmet " + envoie + " au serveur");
+                    lstReception.Update();
+                    // transmission
+                    m_client.Send(tByteEnvoie);
+                    Thread.Sleep(500);
+                    // reception
+                    nbrOctetReception = m_client.Receive(tByteReception); // reception parametre reference sera remplit par le receive n<est pas utile dans le contexte
+                    reponse = Encoding.ASCII.GetString(tByteReception);
+                    lstReception.Items.Add("Confirmation de connection reçue du serveur !");
+                    lstReception.Update();
+                    traitementAttaque(reponse); // met à jour le nain et l'elfe
+                }
+                // fermeture du socket
+                m_client.Close();
+                lstReception.Items.Add(Environment.NewLine + "Déconnecté");
+                lstReception.Update();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void traitementAttaque(string attaque)
+        {
+            string[] tRecup;
+            tRecup = attaque.Split(';');
+
+            int vieNain = Convert.ToInt32(tRecup[0]);
+            int forceNain = Convert.ToInt32(tRecup[1]);
+            int vieElfe = Convert.ToInt32(tRecup[2]);
+            int forceElfe = Convert.ToInt32(tRecup[3]);
+            int sortElfe = Convert.ToInt32(tRecup[4]);
+            m_nain.Vie = vieNain;
+            m_nain.Force = forceNain;
+            m_elfe.Vie = vieElfe;
+            m_elfe.Force = forceElfe;
+            m_elfe.Sort = sortElfe;
+            AfficheNain();
+            AfficheElfe();
+            if (m_nain.Vie == 0 && m_elfe.Vie > 0)
+            {
+                MessageBox.Show("le gagnant est l'elfe");
+            }
+            else if (m_elfe.Vie == 0 && m_nain.Vie > 0)
+            {
+                MessageBox.Show("le gagnant est le nain");
+                picElfe.Image = m_nain.Avatar;
+            }
+            else if (m_elfe.Vie == 0 && m_nain.Vie == 0)
+            {
+                MessageBox.Show("Il y a égalité, les deux sont morts en même temps");
+            }
+        }
+        public void AfficheNain()
+        {
+            lblVieNain.Text = "Vies du nain " + m_nain.Vie;
+            lblForceNain.Text = "Forces du nain " + m_nain.Force;
+            lblArmeNain.Text = "son arme est: " + m_nain.Arme;
+        }
+        public void AfficheElfe()
+        {
+            lblVieElfe.Text = "Vies de l'elfe: " + m_elfe.Vie;
+            lblForceElfe.Text = "Forces de l'elfe: " + m_elfe.Force;
+            lblSortElfe.Text = "Sorts de l'elfe: " + m_elfe.Sort;
         }
     }
 }

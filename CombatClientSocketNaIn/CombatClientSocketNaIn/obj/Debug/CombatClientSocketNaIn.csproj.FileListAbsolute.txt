@@ -18,3 +18,13 @@ C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatClientSocketNaIn\CombatClientSocketNaIn\o
 C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.csproj.CoreCompileInputs.cache
 C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.exe
 C:\PjtVS\00 2C5 PjtVSProgSys\ZIP\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.pdb
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\bin\Debug\CombatClientSocketNaIn.exe.config
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\bin\Debug\CombatClientSocketNaIn.exe
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\bin\Debug\CombatClientSocketNaIn.pdb
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.csproj.AssemblyReference.cache
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.frmClienSocketNain.resources
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.Properties.Resources.resources
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.csproj.GenerateResource.cache
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.csproj.CoreCompileInputs.cache
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.exe
+C:\Users\JF\OneDrive - Cégep de Lévis\aut2021\programmation_systeme\socket_combat\CombatClientSocketNaIn\CombatClientSocketNaIn\obj\Debug\CombatClientSocketNaIn.pdb

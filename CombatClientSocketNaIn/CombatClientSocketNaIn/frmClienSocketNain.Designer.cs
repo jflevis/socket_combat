@@ -38,6 +38,7 @@
             this.lblVieNain = new System.Windows.Forms.Label();
             this.picElfe = new System.Windows.Forms.PictureBox();
             this.picNain = new System.Windows.Forms.PictureBox();
+            this.lstReception = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.picElfe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNain)).BeginInit();
             this.SuspendLayout();
@@ -137,11 +138,20 @@
             this.picNain.TabIndex = 11;
             this.picNain.TabStop = false;
             // 
+            // lstReception
+            // 
+            this.lstReception.FormattingEnabled = true;
+            this.lstReception.Location = new System.Drawing.Point(265, 149);
+            this.lstReception.Name = "lstReception";
+            this.lstReception.Size = new System.Drawing.Size(122, 134);
+            this.lstReception.TabIndex = 22;
+            // 
             // frmClienSocketNain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 290);
+            this.Controls.Add(this.lstReception);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnFrappe);
             this.Controls.Add(this.lblSortElfe);
@@ -173,6 +183,7 @@
         private System.Windows.Forms.Label lblVieNain;
         private System.Windows.Forms.PictureBox picElfe;
         private System.Windows.Forms.PictureBox picNain;
+        private System.Windows.Forms.ListBox lstReception;
     }
 }
 

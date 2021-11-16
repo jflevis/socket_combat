@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmServeurSocketElfe));
             this.btnReset = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnAttente = new System.Windows.Forms.Button();
@@ -131,6 +132,7 @@
             // 
             // picElfe
             // 
+            this.picElfe.Image = ((System.Drawing.Image)(resources.GetObject("picElfe.Image")));
             this.picElfe.Location = new System.Drawing.Point(319, 22);
             this.picElfe.Name = "picElfe";
             this.picElfe.Size = new System.Drawing.Size(180, 160);
@@ -140,6 +142,7 @@
             // 
             // picNain
             // 
+            this.picNain.Image = ((System.Drawing.Image)(resources.GetObject("picNain.Image")));
             this.picNain.Location = new System.Drawing.Point(24, 22);
             this.picNain.Name = "picNain";
             this.picNain.Size = new System.Drawing.Size(180, 160);
