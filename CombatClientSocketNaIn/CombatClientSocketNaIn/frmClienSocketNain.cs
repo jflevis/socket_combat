@@ -27,6 +27,8 @@ namespace CombatClientSocketNaIn
 
             btnReset.Enabled = false;
             Control.CheckForIllegalCrossThreadCalls = false;
+            btnFrappe.Enabled = true;
+            btnReset.Enabled = true;
         }
         void Reset()
         {
@@ -54,7 +56,7 @@ namespace CombatClientSocketNaIn
         private void btnFrappe_Click(object sender, EventArgs e)
         {
             /* déclaration de variables */
-            string envoie = m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_nain.Arme;
+            string envoie = m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_nain.Arme+";";
             string reponse = "aucune";
             int nbrOctetReception;
             byte[] tByteReception = new byte[50];

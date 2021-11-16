@@ -28,8 +28,8 @@ namespace CombatServeurSocketElfe
         {
             InitializeComponent();
             m_r = new Random();
-           
 
+            Reset(); // crée un nain et un Elfe vide
             btnReset.Enabled = false;
             //Démarre un serveur de socket (TcpListener)
 
@@ -56,10 +56,11 @@ namespace CombatServeurSocketElfe
 
             try
             {
-                ThreadStart m_treadstart = new ThreadStart(Combat);
-                Thread m_tread = new Thread(m_treadstart);
-                m_tread.Start(0);
-                Thread.Sleep(500);
+                // ThreadStart m_treadstart = new ThreadStart(Combat);
+                //hread m_tread = new Thread(m_treadstart);
+                //m_tread.Start(0);
+                //Thread.Sleep(500);
+                Combat();
             }
             catch (Exception ex)
             {
@@ -122,7 +123,7 @@ namespace CombatServeurSocketElfe
                     m_elfe.LancerSort(m_nain);
                     AfficheStatNain();
                     // envoyer la réponse au client
-                    reponseServeur = m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_elfe.Vie + ";" + m_elfe.Force.ToString() + ";" + m_elfe.Sort.ToString();
+                    reponseServeur = m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_elfe.Vie + ";" + m_elfe.Force.ToString() + ";" + m_elfe.Sort.ToString() + ";";
                     lstReception.Items.Add(reponseServeur);
                     lstReception.Update();
                     tByteEnvoie = textByte.GetBytes(reponseServeur);
