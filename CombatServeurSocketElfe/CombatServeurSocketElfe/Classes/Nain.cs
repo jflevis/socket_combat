@@ -16,7 +16,7 @@ namespace CombatServeurSocketElfe.Classes
             Vie = vie;
             Force = force;
             Arme = tArme[noArme];
-            Avatar = Image.FromFile("nain.jpg");
+            Avatar = Image.FromFile("nainArme.jpg");
         }
         public void Frapper(Elfe elfe)
         {

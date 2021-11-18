@@ -16,7 +16,7 @@ namespace CombatClientSocketNaIn.Classes
             Vie = vie;
             Force = force;
             Sort = sort;
-            Avatar = Image.FromFile("elfe.jpg");
+            Avatar = Image.FromFile("elfeOreille.jpg");
         }
         public void LancerSort(Nain nain)
         {

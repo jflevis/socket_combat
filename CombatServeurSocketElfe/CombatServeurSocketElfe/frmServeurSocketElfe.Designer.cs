@@ -41,6 +41,7 @@
             this.picElfe = new System.Windows.Forms.PictureBox();
             this.picNain = new System.Windows.Forms.PictureBox();
             this.lstReception = new System.Windows.Forms.ListBox();
+            this.txtGagnant = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picElfe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNain)).BeginInit();
             this.SuspendLayout();
@@ -155,14 +156,25 @@
             this.lstReception.FormattingEnabled = true;
             this.lstReception.Location = new System.Drawing.Point(529, 22);
             this.lstReception.Name = "lstReception";
-            this.lstReception.Size = new System.Drawing.Size(155, 160);
+            this.lstReception.Size = new System.Drawing.Size(369, 277);
             this.lstReception.TabIndex = 22;
+            // 
+            // txtGagnant
+            // 
+            this.txtGagnant.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGagnant.ForeColor = System.Drawing.Color.Red;
+            this.txtGagnant.Location = new System.Drawing.Point(114, 267);
+            this.txtGagnant.Name = "txtGagnant";
+            this.txtGagnant.Size = new System.Drawing.Size(314, 29);
+            this.txtGagnant.TabIndex = 24;
+            this.txtGagnant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmServeurSocketElfe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 290);
+            this.ClientSize = new System.Drawing.Size(910, 308);
+            this.Controls.Add(this.txtGagnant);
             this.Controls.Add(this.lstReception);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnFermer);
@@ -199,6 +211,7 @@
         private System.Windows.Forms.PictureBox picElfe;
         private System.Windows.Forms.PictureBox picNain;
         private System.Windows.Forms.ListBox lstReception;
+        private System.Windows.Forms.TextBox txtGagnant;
     }
 }
 

@@ -27,11 +27,15 @@ namespace CombatServeurSocketElfe
         public frmServeurSocketElfe()
         {
             InitializeComponent();
+            Socket m_client = null;
+
             m_r = new Random();
 
             Reset(); // crée un nain et un Elfe vide
             btnReset.Enabled = false;
             //Démarre un serveur de socket (TcpListener)
+            m_ServerListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7025);
+            m_ServerListener.Start();
 
             lstReception.Items.Add("Serveur démarré !");
             lstReception.Items.Add("PRESSER : << attendre un client >>");
@@ -43,17 +47,16 @@ namespace CombatServeurSocketElfe
         {
             // Combat par un thread
             /* Déclaration d'un client */
-            Socket m_client = null;
+          
             byte[] tByteReception = new byte[50];
             ASCIIEncoding textByte = new ASCIIEncoding();
             byte[] tByteEnvoie;
             bool receptionClientBool;
             string reponseDuServeurAuClient = "";
-            string receptionClient = "";
-            string reponseServeur = "";
+       
+         
             int nbrOctetReceptionClient = 0;
-            string[] tRecup;
-
+       
             try
             {
                 // ThreadStart m_treadstart = new ThreadStart(Combat);
@@ -61,6 +64,7 @@ namespace CombatServeurSocketElfe
                 //m_tread.Start(0);
                 //Thread.Sleep(500);
                 Combat();
+                btnReset.Enabled = true; ;
             }
             catch (Exception ex)
             {
@@ -91,20 +95,17 @@ namespace CombatServeurSocketElfe
                 {
                     //initialisation d'un client (bloquant) 
                     
-               
                     
-                    m_ServerListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7025);
-                    m_ServerListener.Start();
-
-                    lstSocket = new List<Socket>();
-                    lstSocket.Add(m_client);
+                    
 
                     m_client = m_ServerListener.AcceptSocket();
+                   // lstSocket.Add(m_client);
+
                     lstReception.Items.Add("Client branché !");
                     lstReception.Update();
                     nbOctetReception = m_client.Receive(tByteReception);
                     receptionClient = Encoding.ASCII.GetString(tByteReception);
-                    reponseServeur = "Message du client: " + receptionClient;
+                    reponseServeur = "Frappe du nain " + receptionClient;
                     lstReception.Items.Add(reponseServeur);
                     lstReception.Update();
                     tRecup = receptionClient.Split(';');// recuperation de la demande de connection et des données du données (vie,force,arme)
@@ -117,45 +118,63 @@ namespace CombatServeurSocketElfe
                     m_nain.Arme = arme;
                     // appeler la methode m_nain.Frapper pour attaquer l'elfe
                     m_nain.Frapper(m_elfe);
-
                     AfficheStatElfe();
+
                     // appeler la méthode m_elfe.LancerSort pour attaquer le nain
                     m_elfe.LancerSort(m_nain);
                     AfficheStatNain();
+
                     // envoyer la réponse au client
-                    reponseServeur = m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_elfe.Vie + ";" + m_elfe.Force.ToString() + ";" + m_elfe.Sort.ToString() + ";";
-                    lstReception.Items.Add(reponseServeur);
+                    reponseServeur =m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_elfe.Vie + ";" + m_elfe.Force.ToString() + ";" + m_elfe.Sort.ToString() + ";";
+                    lstReception.Items.Add("Envoi vers le client" + reponseServeur);
                     lstReception.Update();
                     tByteEnvoie = textByte.GetBytes(reponseServeur);
                     m_client.Send(tByteEnvoie);
                     Thread.Sleep(500);
-
                 }
                 if (m_nain.Vie == 0 && m_elfe.Vie > 0)
                 {
+                    picNain.Image = m_elfe.Avatar;
                     MessageBox.Show("le gagnant est l'elfe");
+                    btnReset.Enabled = true; ;
+                    lstReception.Items.Add("le gagnant est l'elfe!");
+                    lstReception.Update();
+                    txtGagnant.Text = "le gagnant est l'elfe!";
+                    txtGagnant.Update();
                 }
                 else if (m_elfe.Vie == 0 && m_nain.Vie > 0)
                 {
-                    MessageBox.Show("le gagnant est le nain");
                     picElfe.Image = m_nain.Avatar;
+                    btnReset.Enabled = true; ;
+                    MessageBox.Show("le gagnant est le nain");
+                    lstReception.Items.Add("le gagnant est le nain!");
+                    lstReception.Update();
+                    txtGagnant.Text = "le gagnant est le nain!";
+                    txtGagnant.Update();
+
                 }
                 else if (m_elfe.Vie == 0 && m_nain.Vie == 0)
                 {
                     MessageBox.Show("Il y a égalité, les deux sont morts en même temps");
+                    lstReception.Items.Add("Il y a égalité, les deux sont morts en même temps!");
+                    lstReception.Update();
+                    btnReset.Enabled = true; ;
+                    txtGagnant.Text = "Il y a égalité, les deux sont morts en même temps!";
+                    txtGagnant.Update();
                 }
                 m_client.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception: " + ex.Message);
+                btnReset.Enabled = true; ;
             }
         }
         private void btnFermer_Click(object sender, EventArgs e)
         {
             // il faut avoir un objet elfe et un objet nain instanciés
-            //m_elfe.Vie = 0;
-            //m_nain.Vie = 0;
+            m_elfe.Vie = 0;
+            m_nain.Vie = 0;
             try
             {
                 Thread.Sleep(1000);
@@ -183,7 +202,7 @@ namespace CombatServeurSocketElfe
             lblVieNain.Text = "Vie du nain: " + m_nain.Vie.ToString();
             lblForceNain.Text = "Force du nain: " + m_nain.Force.ToString();
             lblArmeNain.Text = "L'arme du nain est: " + m_nain.Arme;
-            MessageBox.Show("Serveur:Frapper l'elfe");
+           // MessageBox.Show("Serveur:Frapper l'elfe");
             this.Update(); // pour s'assurer de l'affichage via le thread  pour rafraichir tout le formulaire
         }
         void AfficheStatElfe()
@@ -193,7 +212,7 @@ namespace CombatServeurSocketElfe
             lblForceElfe.Text = "Force de l'elfe: " + m_elfe.Force.ToString();
             lblSortElfe.Text = "Sort de l'elfe: " + m_elfe.Sort.ToString();
             // execute frapper
-            MessageBox.Show("Serveur: Lancer un sort au nain");
+            //MessageBox.Show("Serveur: Lancer un sort au nain");
             this.Update(); // pour s'assurer de l'affichage via le thread
         }
         void Reset()
@@ -205,10 +224,14 @@ namespace CombatServeurSocketElfe
             picElfe.Image = m_elfe.Avatar;
             AfficheStatElfe();
             lstReception.Items.Clear();
+            txtGagnant.Text = "";
+            txtGagnant.Update();
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
         }
+
+        
     }
 }

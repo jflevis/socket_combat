@@ -16,7 +16,8 @@ namespace CombatClientSocketNaIn.Classes
             Vie = vie;
             Force = force;
             Arme = tArme[noArme];
-            Avatar = Image.FromFile("nain.jpg");
+            Avatar = Image.FromFile("nainArme.jpg");
+           // Avatar = Image.FromFile("nain.jpg");
         }
         public void Frapper(Elfe elfe)
         {
