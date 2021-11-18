@@ -49,6 +49,7 @@
     <Compile Include="Classes\Combattant.cs" />
     <Compile Include="Classes\Elfe.cs" />
     <Compile Include="Classes\Nain.cs" />
+    <Compile Include="Classes\ThreadTraitement.cs" />
     <Compile Include="frmClienSocketNain.cs">
       <SubType>Form</SubType>
     </Compile>

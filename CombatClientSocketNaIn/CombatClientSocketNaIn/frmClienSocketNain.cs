@@ -24,21 +24,17 @@ namespace CombatClientSocketNaIn
         {
             InitializeComponent();
             m_r = new Random();
-
             btnReset.Enabled = false;
             Control.CheckForIllegalCrossThreadCalls = false;
             btnFrappe.Enabled = true;
             btnReset.Enabled = true;
             MessageBox.Show("Cliquez sur RESET avant d'attaquer la première fois");
         }
-     
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             btnFrappe.Enabled = true;
             Reset();
         }
-
         private void btnFrappe_Click(object sender, EventArgs e)
         {
             /* déclaration de variables */
@@ -156,7 +152,6 @@ namespace CombatClientSocketNaIn
             lblForceElfe.Text = "Force: " + m_elfe.Force.ToString();
             lblSortElfe.Text = "Sort: " + m_elfe.Sort.ToString();
             lstReception.Items.Clear();
-
             txtGagnant.Text = "";
             txtGagnant.Update();
         }

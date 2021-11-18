@@ -21,16 +21,15 @@ namespace CombatServeurSocketElfe
         Elfe m_elfe;
         TcpListener m_ServerListener;
         Socket m_client;
-        Thread m_thCombat;
+        Thread m_tread;
         List<Socket> lstSocket;
-
         public frmServeurSocketElfe()
         {
             InitializeComponent();
             Socket m_client = null;
-
+            lstSocket = new List<Socket>();
+            lstSocket.Add(m_client); // ajout de ce socket dans une liste au cas ou il y aurait plusieurs clients
             m_r = new Random();
-
             Reset(); // crée un nain et un Elfe vide
             btnReset.Enabled = false;
             //Démarre un serveur de socket (TcpListener)
@@ -42,17 +41,16 @@ namespace CombatServeurSocketElfe
             lstReception.Update();
             Control.CheckForIllegalCrossThreadCalls = false;
         }
-
         private void btnAttente_Click(object sender, EventArgs e)
         {
             // Combat par un thread
-            /* Déclaration d'un client */
             try
             {
-             
-               Thread m_tread = new Thread(Combat);
+               m_tread = new Thread(Combat);
                m_tread.Start();
               Thread.Sleep(500);
+
+                MessageBox.Show("Le tread Combat m_tread est: "+m_tread.ThreadState.ToString());
                 //Combat();
                 btnReset.Enabled = true; ;
             }
@@ -75,7 +73,6 @@ namespace CombatServeurSocketElfe
             byte[] tByteEnvoie = new byte[50];
             ASCIIEncoding textByte = new ASCIIEncoding();
             string[] tRecup;
-
             /* traitement de la réception,  préparation de la transmission, transmission */
             //byte[] en string
             try
@@ -84,13 +81,10 @@ namespace CombatServeurSocketElfe
                 while (m_nain.Vie > 0 && m_elfe.Vie > 0)
                 {
                     //initialisation d'un client (bloquant) 
-                    
-                    
-                    
 
-                    m_client = m_ServerListener.AcceptSocket();
-                   // lstSocket.Add(m_client);
 
+                     m_client = m_ServerListener.AcceptSocket();
+                    lstSocket.Add(m_client);
                     lstReception.Items.Add("Client branché !");
                     lstReception.Update();
                     nbOctetReception = m_client.Receive(tByteReception);
@@ -120,6 +114,7 @@ namespace CombatServeurSocketElfe
                     lstReception.Update();
                     tByteEnvoie = textByte.GetBytes(reponseServeur);
                     m_client.Send(tByteEnvoie);
+                  
                     Thread.Sleep(500);
                 }
                 if (m_nain.Vie == 0 && m_elfe.Vie > 0)
@@ -152,7 +147,10 @@ namespace CombatServeurSocketElfe
                     txtGagnant.Text = "Il y a égalité, les deux sont morts en même temps!";
                     txtGagnant.Update();
                 }
+               // MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString()); Ca ne marche pas, il demeure RUNNING, je m'attendais à STOP ???
                 m_client.Close();
+               
+                MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
             }
             catch (Exception ex)
             {
