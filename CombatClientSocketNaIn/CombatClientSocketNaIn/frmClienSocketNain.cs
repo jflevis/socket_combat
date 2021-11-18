@@ -69,6 +69,9 @@ namespace CombatClientSocketNaIn
                     reponse = Encoding.ASCII.GetString(tByteReception);
                     lstReception.Items.Add("Attaque de l'elfe: "+ reponse);
                     lstReception.Update();
+
+                   // Thread m_thread = new Thread(traitementAttaque);
+                    //m_thread.Start(reponse);
                     traitementAttaque(reponse); // met à jour le nain et l'elfe
                 }
                 // fermeture du socket

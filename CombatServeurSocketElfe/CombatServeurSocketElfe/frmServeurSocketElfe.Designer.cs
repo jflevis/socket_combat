@@ -163,9 +163,9 @@
             // 
             this.txtGagnant.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGagnant.ForeColor = System.Drawing.Color.Red;
-            this.txtGagnant.Location = new System.Drawing.Point(114, 267);
+            this.txtGagnant.Location = new System.Drawing.Point(76, 267);
             this.txtGagnant.Name = "txtGagnant";
-            this.txtGagnant.Size = new System.Drawing.Size(314, 29);
+            this.txtGagnant.Size = new System.Drawing.Size(431, 29);
             this.txtGagnant.TabIndex = 24;
             this.txtGagnant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

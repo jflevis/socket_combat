@@ -47,23 +47,13 @@ namespace CombatServeurSocketElfe
         {
             // Combat par un thread
             /* Déclaration d'un client */
-          
-            byte[] tByteReception = new byte[50];
-            ASCIIEncoding textByte = new ASCIIEncoding();
-            byte[] tByteEnvoie;
-            bool receptionClientBool;
-            string reponseDuServeurAuClient = "";
-       
-         
-            int nbrOctetReceptionClient = 0;
-       
             try
             {
-                // ThreadStart m_treadstart = new ThreadStart(Combat);
-                //hread m_tread = new Thread(m_treadstart);
-                //m_tread.Start(0);
-                //Thread.Sleep(500);
-                Combat();
+             
+               Thread m_tread = new Thread(Combat);
+               m_tread.Start();
+              Thread.Sleep(500);
+                //Combat();
                 btnReset.Enabled = true; ;
             }
             catch (Exception ex)
@@ -135,7 +125,7 @@ namespace CombatServeurSocketElfe
                 if (m_nain.Vie == 0 && m_elfe.Vie > 0)
                 {
                     picNain.Image = m_elfe.Avatar;
-                    MessageBox.Show("le gagnant est l'elfe");
+                    //MessageBox.Show("le gagnant est l'elfe");
                     btnReset.Enabled = true; ;
                     lstReception.Items.Add("le gagnant est l'elfe!");
                     lstReception.Update();
@@ -146,7 +136,7 @@ namespace CombatServeurSocketElfe
                 {
                     picElfe.Image = m_nain.Avatar;
                     btnReset.Enabled = true; ;
-                    MessageBox.Show("le gagnant est le nain");
+                   // MessageBox.Show("le gagnant est le nain");
                     lstReception.Items.Add("le gagnant est le nain!");
                     lstReception.Update();
                     txtGagnant.Text = "le gagnant est le nain!";
@@ -155,7 +145,7 @@ namespace CombatServeurSocketElfe
                 }
                 else if (m_elfe.Vie == 0 && m_nain.Vie == 0)
                 {
-                    MessageBox.Show("Il y a égalité, les deux sont morts en même temps");
+                    //MessageBox.Show("Il y a égalité, les deux sont morts en même temps");
                     lstReception.Items.Add("Il y a égalité, les deux sont morts en même temps!");
                     lstReception.Update();
                     btnReset.Enabled = true; ;

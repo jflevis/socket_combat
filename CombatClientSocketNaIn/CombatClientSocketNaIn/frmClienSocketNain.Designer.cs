@@ -153,7 +153,7 @@
             this.txtGagnant.ForeColor = System.Drawing.Color.Red;
             this.txtGagnant.Location = new System.Drawing.Point(98, 275);
             this.txtGagnant.Name = "txtGagnant";
-            this.txtGagnant.Size = new System.Drawing.Size(314, 29);
+            this.txtGagnant.Size = new System.Drawing.Size(471, 29);
             this.txtGagnant.TabIndex = 23;
             this.txtGagnant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
