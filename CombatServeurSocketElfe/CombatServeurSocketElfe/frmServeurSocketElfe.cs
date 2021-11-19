@@ -35,7 +35,6 @@ namespace CombatServeurSocketElfe
             //Démarre un serveur de socket (TcpListener)
             m_ServerListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7025);
             m_ServerListener.Start();
-
             lstReception.Items.Add("Serveur démarré !");
             lstReception.Items.Add("PRESSER : << attendre un client >>");
             lstReception.Update();
@@ -49,7 +48,6 @@ namespace CombatServeurSocketElfe
                m_tread = new Thread(Combat);
                m_tread.Start();
               Thread.Sleep(500);
-
                 MessageBox.Show("Le tread Combat m_tread est: "+m_tread.ThreadState.ToString());
                 //Combat();
                 btnReset.Enabled = true; ;
@@ -67,7 +65,7 @@ namespace CombatServeurSocketElfe
             string reponseServeur = "";
             string receptionClient = "";
             int nbOctetReception;
-            int vie = 0, force = 0, noArme = 0;
+            int vie = 0, force = 0;
             string arme = "";
             byte[] tByteReception = new byte[50];
             byte[] tByteEnvoie = new byte[50];
@@ -81,8 +79,6 @@ namespace CombatServeurSocketElfe
                 while (m_nain.Vie > 0 && m_elfe.Vie > 0)
                 {
                     //initialisation d'un client (bloquant) 
-
-
                      m_client = m_ServerListener.AcceptSocket();
                     lstSocket.Add(m_client);
                     lstReception.Items.Add("Client branché !");
@@ -103,18 +99,15 @@ namespace CombatServeurSocketElfe
                     // appeler la methode m_nain.Frapper pour attaquer l'elfe
                     m_nain.Frapper(m_elfe);
                     AfficheStatElfe();
-
                     // appeler la méthode m_elfe.LancerSort pour attaquer le nain
                     m_elfe.LancerSort(m_nain);
                     AfficheStatNain();
-
                     // envoyer la réponse au client
                     reponseServeur =m_nain.Vie.ToString() + ";" + m_nain.Force.ToString() + ";" + m_elfe.Vie + ";" + m_elfe.Force.ToString() + ";" + m_elfe.Sort.ToString() + ";";
                     lstReception.Items.Add("Envoi vers le client" + reponseServeur);
                     lstReception.Update();
                     tByteEnvoie = textByte.GetBytes(reponseServeur);
                     m_client.Send(tByteEnvoie);
-                  
                     Thread.Sleep(500);
                 }
                 if (m_nain.Vie == 0 && m_elfe.Vie > 0)
@@ -149,7 +142,6 @@ namespace CombatServeurSocketElfe
                 }
                // MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString()); Ca ne marche pas, il demeure RUNNING, je m'attendais à STOP ???
                 m_client.Close();
-               
                 MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
             }
             catch (Exception ex)
@@ -157,6 +149,8 @@ namespace CombatServeurSocketElfe
                 MessageBox.Show("Exception: " + ex.Message);
                 btnReset.Enabled = true; ;
             }
+            m_tread.Abort();
+            MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
         }
         private void btnFermer_Click(object sender, EventArgs e)
         {
@@ -219,7 +213,5 @@ namespace CombatServeurSocketElfe
         {
             Reset();
         }
-
-        
     }
 }

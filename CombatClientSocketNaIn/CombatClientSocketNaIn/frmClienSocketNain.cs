@@ -44,7 +44,6 @@ namespace CombatClientSocketNaIn
             byte[] tByteReception = new byte[50];
             ASCIIEncoding textByte = new ASCIIEncoding();
             byte[] tByteEnvoie = textByte.GetBytes(envoie);
-
             try
             {
                 // initialisation et connection du socket au serveur TCP
@@ -65,7 +64,6 @@ namespace CombatClientSocketNaIn
                     reponse = Encoding.ASCII.GetString(tByteReception);
                     lstReception.Items.Add("Attaque de l'elfe: "+ reponse);
                     lstReception.Update();
-
                    // Thread m_thread = new Thread(traitementAttaque);
                     //m_thread.Start(reponse);
                     traitementAttaque(reponse); // met à jour le nain et l'elfe
@@ -84,7 +82,6 @@ namespace CombatClientSocketNaIn
         {
             string[] tRecup;
             tRecup = attaque.Split(';');
-
             int vieNain = Convert.ToInt32(tRecup[0]);
             int forceNain = Convert.ToInt32(tRecup[1]);
             int vieElfe = Convert.ToInt32(tRecup[2]);
@@ -105,7 +102,6 @@ namespace CombatClientSocketNaIn
                 lstReception.Update();
                 txtGagnant.Text = "le gagnant est l'elfe!";
                 txtGagnant.Update();
-
             }
             else if (m_elfe.Vie == 0 && m_nain.Vie > 0)
             {
@@ -115,7 +111,6 @@ namespace CombatClientSocketNaIn
                 lstReception.Update();
                 txtGagnant.Text = "le gagnant est le nain!";
                 txtGagnant.Update();
-
             }
             else if (m_elfe.Vie == 0 && m_nain.Vie == 0)
             {
@@ -145,7 +140,6 @@ namespace CombatClientSocketNaIn
             lblVieNain.Text = "Vie: " + m_nain.Vie.ToString(); ;
             lblForceNain.Text = "Force: " + m_nain.Force.ToString();
             lblArmeNain.Text = "Arme: " + m_nain.Arme;
-
             m_elfe = new Elfe(1, 0, 0);
             picElfe.Image = m_elfe.Avatar;
             lblVieElfe.Text = "Vie: " + m_elfe.Vie.ToString();
