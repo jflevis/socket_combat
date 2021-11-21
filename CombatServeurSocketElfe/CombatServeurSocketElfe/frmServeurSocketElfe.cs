@@ -21,7 +21,7 @@ namespace CombatServeurSocketElfe
         Elfe m_elfe;
         TcpListener m_ServerListener;
         Socket m_client;
-        Thread m_tread;
+        Thread m_tread,m_thread2;
         List<Socket> lstSocket;
         public frmServeurSocketElfe()
         {
@@ -47,6 +47,10 @@ namespace CombatServeurSocketElfe
             {
                m_tread = new Thread(Combat);
                m_tread.Start();
+
+            //    m_thread2 = new Thread(Combat);
+             //   m_thread2.Start();
+
               Thread.Sleep(500);
                 MessageBox.Show("Le tread Combat m_tread est: "+m_tread.ThreadState.ToString());
                 //Combat();
@@ -150,6 +154,7 @@ namespace CombatServeurSocketElfe
                 btnReset.Enabled = true; ;
             }
             m_tread.Abort();
+           // m_thread2.Abort();
             MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
         }
         private void btnFermer_Click(object sender, EventArgs e)
