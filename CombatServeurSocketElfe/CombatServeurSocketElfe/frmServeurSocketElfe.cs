@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CombatServeurSocketElfe.Classes;
 
+
+// Projet combat JF Rancourt 2021-11-23 matricule 2063738
+
 namespace CombatServeurSocketElfe
 {
     public partial class frmServeurSocketElfe : Form
@@ -21,14 +24,11 @@ namespace CombatServeurSocketElfe
         Elfe m_elfe;
         TcpListener m_ServerListener;
         Socket m_client;
-        Thread m_tread,m_thread2;
-        List<Socket> lstSocket;
+        Thread m_tread;
         public frmServeurSocketElfe()
         {
             InitializeComponent();
             Socket m_client = null;
-            lstSocket = new List<Socket>();
-            lstSocket.Add(m_client); // ajout de ce socket dans une liste au cas ou il y aurait plusieurs clients
             m_r = new Random();
             Reset(); // crée un nain et un Elfe vide
             btnReset.Enabled = false;
@@ -47,14 +47,7 @@ namespace CombatServeurSocketElfe
             {
                m_tread = new Thread(Combat);
                m_tread.Start();
-
-            //    m_thread2 = new Thread(Combat);
-             //   m_thread2.Start();
-
-              Thread.Sleep(500);
-                MessageBox.Show("Le tread Combat m_tread est: "+m_tread.ThreadState.ToString());
-                //Combat();
-                btnReset.Enabled = true; ;
+                btnReset.Enabled = true; 
             }
             catch (Exception ex)
             {
@@ -62,6 +55,7 @@ namespace CombatServeurSocketElfe
                 lstReception.Items.Add(ex.Message);
                 lstReception.Update();
             }
+            MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString()+". On se prépare à l'attaque du nain");
         }
         public void Combat()
         {
@@ -84,7 +78,6 @@ namespace CombatServeurSocketElfe
                 {
                     //initialisation d'un client (bloquant) 
                      m_client = m_ServerListener.AcceptSocket();
-                    lstSocket.Add(m_client);
                     lstReception.Items.Add("Client branché !");
                     lstReception.Update();
                     nbOctetReception = m_client.Receive(tByteReception);
@@ -133,7 +126,6 @@ namespace CombatServeurSocketElfe
                     lstReception.Update();
                     txtGagnant.Text = "le gagnant est le nain!";
                     txtGagnant.Update();
-
                 }
                 else if (m_elfe.Vie == 0 && m_nain.Vie == 0)
                 {
@@ -144,24 +136,20 @@ namespace CombatServeurSocketElfe
                     txtGagnant.Text = "Il y a égalité, les deux sont morts en même temps!";
                     txtGagnant.Update();
                 }
-               // MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString()); Ca ne marche pas, il demeure RUNNING, je m'attendais à STOP ???
-                m_client.Close();
-                MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
+                m_client.Close();// d'il y avait plusieurs socket on fera une boucle avec i incrémenté
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception: " + ex.Message);
                 btnReset.Enabled = true; ;
             }
-            m_tread.Abort();
-           // m_thread2.Abort();
-            MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
         }
         private void btnFermer_Click(object sender, EventArgs e)
         {
             // il faut avoir un objet elfe et un objet nain instanciés
             m_elfe.Vie = 0;
             m_nain.Vie = 0;
+            MessageBox.Show("Le tread Combat m_tread est: " + m_tread.ThreadState.ToString());
             try
             {
                 Thread.Sleep(1000);

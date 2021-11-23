@@ -164,9 +164,9 @@
             this.lblServeurElfe.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblServeurElfe.Location = new System.Drawing.Point(302, 18);
             this.lblServeurElfe.Name = "lblServeurElfe";
-            this.lblServeurElfe.Size = new System.Drawing.Size(196, 29);
+            this.lblServeurElfe.Size = new System.Drawing.Size(173, 29);
             this.lblServeurElfe.TabIndex = 26;
-            this.lblServeurElfe.Text = "Serveur du nain";
+            this.lblServeurElfe.Text = "Client du nain";
             // 
             // frmClienSocketNain
             // 
