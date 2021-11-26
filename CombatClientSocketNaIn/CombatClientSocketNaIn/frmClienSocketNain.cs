@@ -24,9 +24,8 @@ namespace CombatClientSocketNaIn
         {
             InitializeComponent();
             m_r = new Random();
-            btnReset.Enabled = false;
             Control.CheckForIllegalCrossThreadCalls = false;
-            btnFrappe.Enabled = true;
+            btnFrappe.Enabled = false;
             btnReset.Enabled = true;
             MessageBox.Show("Cliquez sur RESET avant d'attaquer la première fois");
         }
@@ -102,6 +101,8 @@ namespace CombatClientSocketNaIn
                 lstReception.Update();
                 txtGagnant.Text = "le gagnant est l'elfe!";
                 txtGagnant.Update();
+                btnFrappe.Enabled = false;
+                btnReset.Enabled = true;
             }
             else if (m_elfe.Vie == 0 && m_nain.Vie > 0)
             {
@@ -111,6 +112,8 @@ namespace CombatClientSocketNaIn
                 lstReception.Update();
                 txtGagnant.Text = "le gagnant est le nain!";
                 txtGagnant.Update();
+                btnFrappe.Enabled = false;
+                btnReset.Enabled = true;
             }
             else if (m_elfe.Vie == 0 && m_nain.Vie == 0)
             {
@@ -119,6 +122,8 @@ namespace CombatClientSocketNaIn
                 lstReception.Update();
                 txtGagnant.Text = "Il y a égalité, les deux sont morts en même temps!";
                 txtGagnant.Update();
+                btnFrappe.Enabled = false;
+                btnReset.Enabled = true;
             }
         }
         public void AfficheNain()
@@ -148,6 +153,8 @@ namespace CombatClientSocketNaIn
             lstReception.Items.Clear();
             txtGagnant.Text = "";
             txtGagnant.Update();
+            btnFrappe.Enabled = true;
+            btnReset.Enabled = false;
         }
     }
 }

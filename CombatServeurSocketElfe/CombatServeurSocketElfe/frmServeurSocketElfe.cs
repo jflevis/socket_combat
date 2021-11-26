@@ -30,8 +30,9 @@ namespace CombatServeurSocketElfe
             InitializeComponent();
             Socket m_client = null;
             m_r = new Random();
+            btnAttente.Enabled = false;
+            btnReset.Enabled =true;
             Reset(); // crée un nain et un Elfe vide
-            btnReset.Enabled = false;
             //Démarre un serveur de socket (TcpListener)
             m_ServerListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7025);
             m_ServerListener.Start();
@@ -111,7 +112,8 @@ namespace CombatServeurSocketElfe
                 {
                     picNain.Image = m_elfe.Avatar;
                     //MessageBox.Show("le gagnant est l'elfe");
-                    btnReset.Enabled = true; ;
+                    btnReset.Enabled = true;
+                    btnAttente.Enabled = false;
                     lstReception.Items.Add("le gagnant est l'elfe!");
                     lstReception.Update();
                     txtGagnant.Text = "le gagnant est l'elfe!";
@@ -120,8 +122,9 @@ namespace CombatServeurSocketElfe
                 else if (m_elfe.Vie == 0 && m_nain.Vie > 0)
                 {
                     picElfe.Image = m_nain.Avatar;
-                    btnReset.Enabled = true; ;
-                   // MessageBox.Show("le gagnant est le nain");
+                    btnReset.Enabled = true;
+                    btnAttente.Enabled = false;
+                    // MessageBox.Show("le gagnant est le nain");
                     lstReception.Items.Add("le gagnant est le nain!");
                     lstReception.Update();
                     txtGagnant.Text = "le gagnant est le nain!";
@@ -132,7 +135,8 @@ namespace CombatServeurSocketElfe
                     //MessageBox.Show("Il y a égalité, les deux sont morts en même temps");
                     lstReception.Items.Add("Il y a égalité, les deux sont morts en même temps!");
                     lstReception.Update();
-                    btnReset.Enabled = true; ;
+                    btnReset.Enabled = true;
+                    btnAttente.Enabled = false;
                     txtGagnant.Text = "Il y a égalité, les deux sont morts en même temps!";
                     txtGagnant.Update();
                 }
@@ -201,6 +205,8 @@ namespace CombatServeurSocketElfe
             lstReception.Items.Clear();
             txtGagnant.Text = "";
             txtGagnant.Update();
+            btnAttente.Enabled = true;
+            btnReset.Enabled = false;
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
